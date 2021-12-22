@@ -1,0 +1,620 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}{\f1\fnil Times New Roman;}{\f2\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue0;\red35\green38\blue41;\red255\green255\blue255;}
+{\*\generator Riched20 6.3.9600}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs28\lang9 Theoretical Questions:\par
+1) What is JDBC Driver? Please explain in brief?\par
+          1) JDBC-ODBC bridge driver:\par
+         The JDBC-ODBC bridge driver uses ODBC driver to connect to the database. The JDBC-discouraged because of thin driver.\par
+Oracle does not support the JDBC-ODBC Bridge from Java 8. Oracle recommends that you use JDBC drivODBC bridge driver converts JDBC method calls into the ODBC function calls. This is now ers provided by the vendor of your database instead of the JDBC-ODBC Bridge.\par
+Advantages:\par
+easy to use.\par
+can be easily connected to any database.\par
+Disadvantages:\par
+Performance degraded because JDBC method call is converted into the ODBC function calls.\par
+The ODBC driver needs to be installed on the client machine.  \par
+2) Native-API driver:\par
+The Native API driver uses the client-side libraries of the database. The driver converts JDBC method calls into native calls of the database API. It is not written entirely in java.\par
+Advantage:\par
+performance upgraded than JDBC-ODBC bridge driver.\par
+Disadvantage:\par
+The Native driver needs to be installed on the each client machine.\par
+The Vendor client library needs to be installed on client machine.\par
+3) Network Protocol driver\par
+The Network Protocol driver uses middleware (application server) that converts JDBC calls directly or indirectly into the vendor-specific database protocol. It is fully written in java.\par
+Advantage:\par
+No client side library is required because of application server that can perform many tasks like auditing, load balancing, logging etc.\par
+Disadvantages:\par
+Network support is required on client machine.\par
+Requires database-specific coding to be done in the middle tier.\par
+4) Thin driver\par
+The thin driver converts JDBC calls directly into the vendor-specific database protocol. That is why it is known as thin driver. It is fully written in Java language.\par
+Advantage:\par
+Better performance than all other drivers.\par
+No software is required at client side or server side.\par
+Disadvantage:\par
+Drivers depend on the Database.\par
+\par
+2)What are the JDBC  APIcomponents?\par
+    1. The JDBC API  : The JDBC API gives access of programming data from the Java. To use this, applications can execute SQL statements and retrieve results and updation to the database. The JDBC API is part of the Java platform, it includes the Java Standard Edition.\par
+2. JDBC Driver Manager  :  The JDBC DriverManager is the class in JDBC API. The objects of this class can connect Java applications to a JDBC driver. DriverManager is the very important part of the JDBC architecture.\par
+3. JDBC Test Suite : The JDBC driver test suite helps JDBC drivers to run your program. They are not exhaustive,they do exercise with important features in the JDBC API.\par
+4. JDBC-ODBC Bridge : The Java Software bridge provides JDBC access via ODBC drivers.You have to load ODBC binary code for client machines for using this driver. This driver is very important for application server code has to be in Java in a three-tier architecture.\par
+\par
+3)What are the differences between  Statement  and PreparedStatement interface?\par
+  1)Statement\tab\par
+It is used when SQL query is to be executed only once.\par
+You can not pass parameters at runtime\par
+Used for CREATE, ALTER, DROP statements.\tab\par
+Performance is very low\par
+It is base interface\par
+Used to execute normal SQL queries.\tab\par
+We can not used statement for reading binary data.\par
+It is used for DDL statements.\par
+We can not used statement for writing binary data.\par
+No binary protocol is used for communication.\tab\par
+2)PreparedStatement\par
+\tab It is used when SQL query is to be executed multiple times.\par
+\tab You can pass parameters at runtime.\par
+\tab Used for the queries which are to be executed multiple times\par
+            It extends statement interface\par
+            Used to execute dynamic SQL queries\par
+            We can used Preparedstatement for reading binary data.\par
+            It is  used for any SQL Query\par
+            We can used Preparedstatement for writing binary data.\par
+            Binary protocol is used for communication.\par
+\par
+4)What is the major difference between java.util.date and java.sql.Date data type?\par
+     The java.util.date class represents a particular moment in time, with millisecond precision since the 1st of January 1970 00:00:00 GMT (the epoch time). The class is used to keep coordinated universal time (UTC).\par
+The java.sql.Date extends java.util.Date class.\par
+Its main purpose is to represent SQL DATE, which keeps years, months and days. No time data is kept.\par
+In fact, the date is stored as milliseconds since the 1st of January 1970 00:00:00 GMT and the time part is normalized, i.e. set to zero.\par
+Basically, it\rquote s a wrapper around java.util.Date that handles SQL specific requirements. java.sql.Date should be used only when dealing with databases.\par
+\par
+5)What do you understand by Reflection in java programming language?\par
+  Reflection is a feature in the Java programming language. It allows an executing Java program to examine or "introspect" upon itself, and manipulate internal properties of the program. For example, it's possible for a Java class to obtain the names of all its members and display them.\par
+The ability to examine and manipulate a Java class from within itself may not sound like very much, but in other programming languages this feature simply doesn't exist. For example, there is no way in a Pascal, C, or C++ program to obtain information about the functions defined within that program.\par
+One tangible use of reflection is in JavaBeans, where software components can be manipulated visually via a builder tool. The tool uses reflection to obtain the properties of Java components (classes) as they are dynamically loaded.\par
+6)What is Gang of Four(GOF)?\par
+   1)Creational Design Patterns\par
+Abstract Factory. Allows the creation of objects without specifying their concrete type.\par
+Builder. Uses to create complex objects.\par
+Factory Method. Creates objects without specifying the exact class to create.\par
+Prototype. Creates a new object from an existing object.\par
+Singleton. Ensures only one instance of an object is created.\par
+2)Structural Design Patterns\par
+Adapter. Allows for two incompatible classes to work together by wrapping an interface around one of the existing classes.\par
+Bridge. Decouples an abstraction so two classes can vary independently.\par
+Composite. Takes a group of objects into a single object.\par
+Decorator. Allows for an object\rquote s behavior to be extended dynamically at run time.\par
+Facade. Provides a simple interface to a more complex underlying object.\par
+Flyweight. Reduces the cost of complex object models.\par
+Proxy. Provides a placeholder interface to an underlying object to control access, reduce cost, or reduce complexity.\par
+3)Behavior Design Patterns\par
+Chain of Responsibility. Delegates commands to a chain of processing objects.\par
+Command. Creates objects which encapsulate actions and parameters.\par
+Interpreter. Implements a specialized language.\par
+Iterator. Accesses the elements of an object sequentially without exposing its underlying representation.\par
+Mediator. Allows loose coupling between classes by being the only class that has detailed knowledge of their methods.\par
+\par
+7)What is Factory pattern and Abstract factory pattern?\par
+  The Abstract Factory Pattern\par
+Provide an interface for creating families of related or dependent objects without specifying their concrete classes.\par
+The Abstract Factory pattern is very similar to the Factory Method pattern. One difference between the two is that with the Abstract Factory pattern, a class delegates the responsibility of object instantiation to another object via composition whereas the Factory Method pattern uses inheritance and relies on a subclass to handle the desired object instantiation.\par
+Actually, the delegated object frequently uses factory methods to perform the instantiation!\par
+Factory pattern\par
+Factory patterns are examples of creational patterns\par
+Creational patterns abstract the object instantiation process. They hide how objects are created and help make the overall system independent of how its objects are created and composed.\par
+Class creational patterns focus on the use of inheritance to decide the object to be instantiated Factory Method\par
+Object creational patterns focus on the delegation of the instantiation to another object Abstract Factory\par
+\par
+8)What is Singleton pattern?How can you create Singleton class in java?\par
+   Singleton pattern restricts the instantiation of a class and ensures that only one instance of the class exists in the java virtual machine.\par
+The singleton class must provide a global access point to get the instance of the class.\par
+Singleton pattern is used for logging, drivers objects, caching and thread pool.\par
+Singleton design pattern is also used in other design patterns like Abstract Factory, Builder, Prototype, Facade etc.\par
+Singleton design pattern is used in core java classes also, for example java.lang.Runtime, java.awt.Desktop.\par
+    Singleton is a creational design pattern, which ensures that only one object of its kind exists and provides a single point of access to it for any other code. You can't just use a class that depends on Singleton in some other context.\par
+To create a singleton class, we must follow the steps, given below:\par
+1)Ensure that only one instance of the class exists.\par
+2)Provide global access to that instance by:\par
+
+\pard 
+{\pntext\f0 i.\tab}{\*\pn\pnlvlbody\pnf0\pnindent0\pnstart1\pnlcrm{\pntxta.}}
+\fi-360\li720\sa200\sl276\slmult1 Declaring all constructors of the class to be private.\par
+{\pntext\f0 ii.\tab}Providing a static method that returns a reference to the instance. The lazy initialization concept is used to write the static methods.\par
+{\pntext\f0 iii.\tab}The instance is stored as a private static variable.\par
+
+\pard 
+{\pntext\f0 1.\tab}{\*\pn\pnlvlbody\pnf0\pnindent0\pnstart1\pndec{\pntxta.}}
+\fi-360\li360\sa200\sl276\slmult1 Eager initialization\par
+{\pntext\f0 2.\tab}Static block initialization\par
+{\pntext\f0 3.\tab}Lazy Initialization\par
+{\pntext\f0 4.\tab}Thread Safe Singleton\par
+{\pntext\f0 5.\tab}Bill Pugh Singleton Implementation\par
+{\pntext\f0 6.\tab}Using Reflection to destroy Singleton Pattern\par
+{\pntext\f0 7.\tab}Enum Singleton\par
+{\pntext\f0 8.\tab}Serialization and Singleton\par
+
+\pard\sa200\sl276\slmult1\par
+9)What is a version control system(VCS) and what is git repository?\par
+   A Version Control System (VCS) refers to the method used to save a file's versions for future reference.\par
+Intuitively, many people already version control their projects by renaming different versions of the same file in various ways like blogScript.js, blogScript_v2.js, blogScript_v3.js, blogScript_final.js, blogScript_definite_final.js, and so on. But this approach is error-prone and ineffective for team projects.\par
+Also, tracking what changed, who changed it, and why it was changed is a tedious endeavor with this traditional approach. This illuminates the importance of a reliable and collaborative version control system like Git.\par
+However, to get the best of Git, it is essential to understand how Git handles your files.\par
+Repositories in GIT contain a collection of files of various different versions of a Project. These files are imported from the repository into the local server of the user for further updations and modifications in the content of the file. A VCS or the Version Control System is used to create these versions and store them in a specific place termed as a repository\par
+Files states in Git\par
+In Git, there are three primary states (conditions) in which a file can be: modified state, staged state, or committed state.\par
+1)Modified state\par
+A file in the modified state is a revised \f1\emdash  but uncommitted (unrecorded) \emdash  file.\par
+In other words, files in the modified state are files you have modified but have not explicitly instructed Git to monitor.\par
+\f0\lang1033 2)\f1\lang9 Staged state\par
+Files in the staged state are modified files that have been selected \emdash  in their current state (version) \emdash  and are being prepared to be saved (committed) into the .git repository during the next commit snapshot.\par
+Once a file gets staged, it implies that you have explicitly authorized Git to monitor that file\rquote s version.\par
+\f0\lang1033 3)\f1\lang9 Committed state\par
+Files in the committed state are files successfully stored into the .git repository.Thus, a committed file is a file in which you have recorded its staged version into the Git directory (folder).\par
+\par
+\f0\lang1033 10)Can you explain head in terms of git and also tell the number of heads that can be present in a repository?\lang9\par
+   The HEAD is the commit or branch you are presently viewing. ... If we are viewing the master branch, then \ldblquote master\rdblquote  is also our HEAD. If we are not viewing the master branch, then whatever branch or commit we are viewing is our HEAD. A repository can contain a number of heads but only one HEAD.\par
+\cf1\ul\b\f2\fs24  PRACTICAL Q/A:\f0\fs28\par
+\ulnone Q1)\b0  \b Please do all the CRUD operations using JDBC with Table Employee.\par
+\ul ANS: \ulnone Select.java\par
+
+\pard\sl240\slmult1\b0 package com.crud_operations;\par
+\par
+import java.sql.Connection;\par
+import java.sql.DatabaseMetaData;\par
+import java.sql.DriverManager;\par
+import java.sql.ResultSet;\par
+import java.sql.Statement;\par
+\par
+public class Select \{\par
+\tab public static void main(String[] args) \{\par
+\tab\tab // TODO Auto-generated method stub\par
+\tab\tab try \{\par
+\tab\tab\tab Class.forName("com.mysql.cj.jdbc.Driver");\par
+\tab\tab\tab Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeetable", "root", "SudebLaltu6@");\par
+\tab\tab\tab // Here employeetable is database name, root is the username and SudebLaltu6@ is the password\par
+\tab  \tab\tab Statement stmt = con.createStatement();\par
+\tab\tab\tab DatabaseMetaData dm = con.getMetaData();\par
+\tab\tab\tab System.out.println(dm);\par
+\par
+\tab\tab\tab // SQL statement execution\par
+\tab\tab\tab ResultSet resultset = stmt.executeQuery("select * from employee;");\par
+\tab\tab\tab while (resultset.next()) \{\par
+\tab\tab\tab\tab System.out.println(resultset.getString("EmpName"));\par
+\tab\tab\tab\}\par
+\tab\tab\tab System.out.println("Query has been executes Successfully");\par
+\tab\tab\tab stmt.close();\par
+\tab\tab\tab con.close();\par
+\tab\tab\} catch (Exception e) \{ // Handling Exception in case of Exception\par
+\tab\tab\tab System.out.println("Something went wrong " + e);\par
+\par
+\tab\tab\}\par
+\par
+\tab\}\par
+\}\par
+
+\pard\sa200\sl276\slmult1\ul\b CreateTable.java\par
+
+\pard\sl240\slmult1\ulnone\b0 public class CreateTable \{\par
+\tab public static void main(String[] args) \{\par
+\tab\tab // TODO Auto-generated method stub\par
+\tab\tab try \{\par
+\tab\tab\tab Class.forName("com.mysql.cj.jdbc.Driver");\par
+\tab\tab\tab Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeetable", "root", "SudebLaltu6@");\par
+\tab\tab\tab // Here employeetable is database name, root is the username and SudebLaltu6@ is the password\par
+\tab  \tab\tab Statement stmt = con.createStatement();\par
+\tab\tab\tab DatabaseMetaData dm = con.getMetaData();\par
+\tab\tab\tab System.out.println(dm);\par
+\par
+\tab\tab\tab // SQL statement execution\par
+\tab\tab\tab stmt.execute("create table employee(EmpId int, EmpName varchar(20), phone text);");\par
+\tab\tab\tab System.out.println("Query has been executes Successfully");\par
+\tab\tab\tab stmt.close();\par
+\tab\tab\tab con.close();\par
+\tab\tab\} catch (Exception e) \{ // Handling Exception in case of Exception\par
+\tab\tab\tab System.out.println("Something went wrong " + e);\par
+\par
+\tab\tab\}\par
+\par
+\tab\}\par
+\par
+\}\par
+\ul\b InsertData.java\par
+\par
+\ulnone\b0 package com.crud_operations;\par
+\par
+import java.sql.Connection;\par
+import java.sql.DatabaseMetaData;\par
+import java.sql.DriverManager;\par
+import java.sql.Statement;\par
+\par
+public class InsertData \{\par
+\tab public static void main(String[] args) \{\par
+\tab\tab // TODO Auto-generated method stub\par
+\tab\tab try \{\par
+\tab\tab\tab Class.forName("com.mysql.cj.jdbc.Driver");\par
+\tab\tab\tab Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeetable", "root", "SudebLaltu6@");\par
+\tab\tab\tab // Here employeetable is database name, root is the username and SudebLaltu6@ is the password\par
+\tab  \tab\tab Statement stmt = con.createStatement();\par
+\tab\tab\tab DatabaseMetaData dm = con.getMetaData();\par
+\tab\tab\tab System.out.println(dm);\par
+\par
+\tab\tab\tab // SQL statement execution\par
+\tab\tab\tab stmt.execute("insert into employee values(1,'Sudeb Dolui', '8343');");\par
+\tab\tab\tab stmt.execute("insert into employee values(2,'Mr. Venu Pupalla', '8584');");\par
+\tab\tab\tab System.out.println("Query has been executes Successfully");\par
+\tab\tab\tab stmt.close();\par
+\tab\tab\tab con.close();\par
+\tab\tab\} catch (Exception e) \{ // Handling Exception in case of Exception\par
+\tab\tab\tab System.out.println("Something went wrong " + e);\par
+\par
+\tab\tab\}\par
+\par
+\tab\}\par
+\par
+\}\par
+\par
+
+\pard\sa200\sl276\slmult1\ul\b UpdateData.java\par
+
+\pard\sl240\slmult1\ulnone\b0 package com.crud_operations;\par
+\par
+import java.sql.Connection;\par
+import java.sql.DatabaseMetaData;\par
+import java.sql.DriverManager;\par
+import java.sql.Statement;\par
+\par
+public class UpdateData \{\par
+\tab public static void main(String[] args) \{\par
+\tab\tab // TODO Auto-generated method stub\par
+\tab\tab try \{\par
+\tab\tab\tab Class.forName("com.mysql.cj.jdbc.Driver");\par
+\tab\tab\tab Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeetable", "root", "SudebLaltu6@");\par
+\tab\tab\tab // Here employeetable is database name, root is the username and SudebLaltu6@ is the password\par
+\tab  \tab\tab Statement stmt = con.createStatement();\par
+\tab\tab\tab DatabaseMetaData dm = con.getMetaData();\par
+\tab\tab\tab System.out.println(dm);\par
+\par
+\tab\tab\tab // SQL statement execution\par
+\tab\tab\tab stmt.executeUpdate("update employee set EmpName='Mr. Sudeb Dolui' where EmpId =1;");\par
+\tab\tab\tab System.out.println("Query has been executes Successfully");\par
+\tab\tab\tab stmt.close();\par
+\tab\tab\tab con.close();\par
+\tab\tab\} catch (Exception e) \{ // Handling Exception in case of Exception\par
+\tab\tab\tab System.out.println("Something went wrong " + e);\par
+\par
+\tab\tab\}\par
+\par
+\tab\}\par
+\}\par
+\ul\b DeleteData.java\par
+\ulnone\b0 package com.crud_operations;\par
+\par
+import java.sql.Connection;\par
+import java.sql.DatabaseMetaData;\par
+import java.sql.DriverManager;\par
+import java.sql.Statement;\par
+\par
+public class DeleteData \{\par
+\tab public static void main(String[] args) \{\par
+\tab\tab // TODO Auto-generated method stub\par
+\tab\tab try \{\par
+\tab\tab\tab Class.forName("com.mysql.cj.jdbc.Driver");\par
+\tab\tab\tab Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeetable", "root", "SudebLaltu6@");\par
+\tab\tab\tab // Here employeetable is database name, root is the username and SudebLaltu6@ is the password\par
+\tab  \tab\tab Statement stmt = con.createStatement();\par
+\tab\tab\tab DatabaseMetaData dm = con.getMetaData();\par
+\tab\tab\tab System.out.println(dm);\par
+\par
+\tab\tab\tab // SQL statement execution\par
+\tab\tab\tab stmt.execute("delete from employee where EmpId=1;");\par
+\tab\tab\tab System.out.println("Query has been executes Successfully");\par
+\tab\tab\tab stmt.close();\par
+\tab\tab\tab con.close();\par
+\tab\tab\} catch (Exception e) \{ // Handling Exception in case of Exception\par
+\tab\tab\tab System.out.println("Something went wrong " + e);\par
+\par
+\tab\tab\}\par
+\par
+\tab\}\par
+\}\par
+\ul\b\par
+CreateDatabase.java\par
+\ulnone\b0 package com.crud_operations;\par
+\par
+import java.sql.Connection;\par
+import java.sql.DatabaseMetaData;\par
+import java.sql.DriverManager;\par
+import java.sql.Statement;\par
+\par
+public class CreateDataBase \{\par
+\tab public static void main(String[] args) \{\par
+\tab\tab // TODO Auto-generated method stub\par
+\tab\tab try \{\par
+\tab\tab\tab Class.forName("com.mysql.cj.jdbc.Driver");\par
+\tab\tab\tab Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "SudebLaltu6@");\par
+\tab\tab\tab // Here sampledb is database name, root is the username and SudebLaltu6@ is the password\par
+\tab\tab\tab Statement stmt = con.createStatement();\par
+\tab\tab\tab DatabaseMetaData dm = con.getMetaData();\par
+\tab\tab\tab System.out.println(dm);\par
+\par
+\tab\tab\tab // SQL statement execution\par
+\tab\tab\tab stmt.execute("create database employeetable;");\par
+\tab\tab\tab System.out.println("Query has been executes Successfully");\par
+\tab\tab\tab stmt.close();\par
+\tab\tab\tab con.close();\par
+\tab\tab\} catch (Exception e) \{ // Handling Exception in case of Exception\par
+\tab\tab\tab System.out.println("Something went wrong " + e);\par
+\par
+\tab\tab\}\par
+\par
+\tab\}\par
+\}\par
+\ul\b\par
+
+\pard\sa200\sl276\slmult1\ulnone Q2)\b0  \b Develop a restful web service to perform CRUD operations. Entities should have Student , Courses and Teachers.\par
+ANS:Student.java\par
+
+\pard\sl240\slmult1\b0 package com.restful_crud_operations;\par
+\par
+import java.io.Serializable;\par
+import java.util.List;\par
+\par
+import javax.persistence.CascadeType;\par
+import javax.persistence.Column;\par
+import javax.persistence.Entity;\par
+import javax.persistence.GeneratedValue;\par
+import javax.persistence.GenerationType;\par
+import javax.persistence.Id;\par
+import javax.persistence.OneToMany;\par
+import javax.persistence.OneToOne;\par
+import javax.persistence.Table;\par
+\par
+@Entity\par
+@Table(name = "Student")\par
+public class Student implements Serializable\{\par
+\tab /**\par
+\tab  * \par
+\tab  */\par
+\tab private static final long serialVersionUID = -5326101768774864410L;\par
+\par
+\tab @Id\par
+\tab @GeneratedValue(strategy = GenerationType.AUTO)\par
+\tab @Column(name = "StudentID") // naming column as specified name\par
+\tab private int studentID;\par
+\par
+\tab @Column(name = "StudentName")\par
+\tab private String studentName;\par
+\par
+\tab @Column(name = "StudentAddress")\par
+\tab private String studentAddress;\par
+\par
+\tab @Column(name = "StudentContact")\par
+\tab private long studentContact;\par
+\par
+\tab @OneToOne(cascade = CascadeType.ALL) // perform Operation on the child class\par
+\tab private Teachers teachers;\par
+\par
+\tab @OneToMany(cascade = CascadeType.ALL)\par
+\tab private List<Courses> fees;\par
+\par
+\tab public int getStudentID() \{\par
+\tab\tab return studentID;\par
+\tab\}\par
+\par
+\tab public void setStudentID(int studentID) \{\par
+\tab\tab this.studentID = studentID;\par
+\tab\}\par
+\par
+\tab public String getStudentName() \{\par
+\tab\tab return studentName;\par
+\tab\}\par
+\par
+\tab public void setStudentName(String studentName) \{\par
+\tab\tab this.studentName = studentName;\par
+\tab\}\par
+\par
+\tab public String getStudentAddress() \{\par
+\tab\tab return studentAddress;\par
+\tab\}\par
+\par
+\tab public void setStudentAddress(String studentAddress) \{\par
+\tab\tab this.studentAddress = studentAddress;\par
+\tab\}\par
+\par
+\tab public long getStudentContact() \{\par
+\tab\tab return studentContact;\par
+\tab\}\par
+\par
+\tab public void setStudentContact(long studentContact) \{\par
+\tab\tab this.studentContact = studentContact;\par
+\tab\}\par
+\par
+\tab public Teachers getTeachers() \{\par
+\tab\tab return teachers;\par
+\tab\}\par
+\par
+\tab public void setTeachers(Teachers teachers) \{\par
+\tab\tab this.teachers = teachers;\par
+\tab\}\par
+\par
+\tab public List<Courses> getTelephones() \{\par
+\tab\tab return fees;\par
+\tab\}\par
+\par
+\tab public void setTelephones(List<Courses> telephones) \{\par
+\tab\tab this.fees = telephones;\par
+\tab\}\par
+\par
+\}\par
+\par
+
+\pard\sa200\sl276\slmult1\ul\b Teacher.java:\par
+
+\pard\sl240\slmult1\ulnone\b0 package com.restful_crud_operations;\par
+\par
+import java.io.Serializable;\par
+\par
+import javax.persistence.Entity;\par
+import javax.persistence.GeneratedValue;\par
+import javax.persistence.GenerationType;\par
+import javax.persistence.Id;\par
+\par
+@Entity\par
+public class Teachers implements Serializable\{\par
+\par
+\tab /**\par
+\tab  * \par
+\tab  */\par
+\tab private static final long serialVersionUID = 8200960945324991376L;\par
+\tab @Id\par
+    @GeneratedValue(strategy = GenerationType.AUTO)\par
+\tab private int teacherId;\par
+\tab private String subject;\par
+\tab public int getTeacherId() \{\par
+\tab\tab return teacherId;\par
+\tab\}\par
+\tab public void setTeacherId(int teacherId) \{\par
+\tab\tab this.teacherId = teacherId;\par
+\tab\}\par
+\tab public String getSubject() \{\par
+\tab\tab return subject;\par
+\tab\}\par
+\tab public void setSubject(String subject) \{\par
+\tab\tab this.subject = subject;\par
+\tab\}\par
+\}\par
+\par
+
+\pard\sa200\sl276\slmult1\ul\b Courses.java\par
+
+\pard\sl240\slmult1\ulnone\b0 package com.restful_crud_operations;\par
+\par
+import java.io.Serializable;\par
+\par
+import javax.persistence.Entity;\par
+import javax.persistence.GeneratedValue;\par
+import javax.persistence.GenerationType;\par
+import javax.persistence.Id;\par
+\par
+@Entity\par
+public class Courses implements Serializable\{\par
+\par
+\tab /**\par
+\tab  * \par
+\tab  */\par
+\tab private static final long serialVersionUID = 8804092356325376228L;\par
+\tab @Id\par
+    @GeneratedValue(strategy = GenerationType.AUTO)\par
+\tab private int courseId, fees;\par
+\tab private String courseName;\par
+\tab public int getCourseId() \{\par
+\tab\tab return courseId;\par
+\tab\}\par
+\tab public void setCourseId(int courseId) \{\par
+\tab\tab this.courseId = courseId;\par
+\tab\}\par
+\tab public String getCourseName() \{\par
+\tab\tab return courseName;\par
+\tab\}\par
+\tab public void setCourseName(String courseName) \{\par
+\tab\tab this.courseName = courseName;\par
+\tab\}\par
+\tab public long getFees() \{\par
+\tab\tab return fees;\par
+\tab\}\par
+\tab public void setFees(int fees) \{\par
+\tab\tab this.fees = fees;\par
+\tab\}\par
+\}\par
+\par
+
+\pard\sa200\sl276\slmult1\b OneToManyRelationship.java\par
+
+\pard\sl240\slmult1\b0 package com.restful_crud_operations;\par
+import java.util.ArrayList;\par
+import java.util.List;\par
+\par
+import org.hibernate.Session;\par
+import org.hibernate.SessionFactory;\par
+import org.hibernate.Transaction;\par
+import org.hibernate.cfg.Configuration;\par
+\par
+\par
+public class OneToManyRelationShip \{\par
+\tab public static void main(String[] args) \{\par
+        // TODO Auto-generated method stub\par
+        SessionFactory factory=new  Configuration().configure("hibernate.cfg.xml").buildSessionFactory();\par
+         Session session = factory.openSession();\par
+         Transaction tx= session.beginTransaction();\par
+         \par
+         // Process to execute the Query         \par
+         Courses c1=new Courses();\par
+         c1.setCourseName("ECE");\par
+         c1.setFees(80000);\par
+         Courses c2=new Courses();\par
+         c2.setCourseName("CSE");\par
+         c2.setFees(120000);\par
+         List<Courses> fees = new ArrayList<Courses>();\par
+         fees.add(c2);\par
+         fees.add(c1);\par
+         Student student=new Student();\par
+         student.setStudentName("Sudeb DOlui");\par
+
+\pard\li850\sl240\slmult1 student.setStudentContact(89194);\par
+
+\pard\sl240\slmult1          student.setStudentAddress("Vizag");\par
+         session.save(c1);\par
+         session.save(c2);\par
+         session.save(student);\par
+         tx.commit();  // Saving Object Permanently ans closing session\par
+         factory.close(); // closing very expensive connection\par
+    \}\par
+ \par
+\}\par
+\par
+
+\pard\sa200\sl276\slmult1\b Q3)\b0  \b Create your own github account and repository and push, pull and clone a file from command prompt?\par
+ANS:\par
+\b0 Firstly get into GITHUB.COM and then sign in into your account or we could sign up by clicking on the signup button and then give the required details to create an account. Then in order to do the next steps to perform the actions.  \par
+1. You need to create a new repository and click on the plus sign.\par
+Fill up all the required details, i.e., repository name, description and also make the repository public this time as it is free.\par
+2. Open your Git Bash.\par
+Git Bash can be downloaded in here, and it is a shell used to interface with the operating system which follows the UNIX command.\par
+3. Create your local project in your desktop directed towards a current working directory.\par
+pwd stands for 'print working directory', which is used to print the current directory.\par
+4. Initialize the git repository\par
+Use git init to initialize the repository. It is used to create a new empty repository or directory consisting of files' with the hidden directory. '.git' is created at the top level of your project, which places all of the revision information in one place.\par
+5. Add the file to the new local repository.\par
+Use git add . in your bash to add all the files to the given folder.\par
+Use git status in your bash to view all the files which are going to be staged to the first commit.\par
+6. Commit the files staged in your local repository by writing a commit message.\par
+You can create a commit message by git commit -m 'your message', which adds the change to the local repository.\par
+git commit uses '-m' as a flag for a message to set the commits with the content where the full description is included, and a message is written in an imperative sentence up to 50 characters long and defining "what was changed", and "why was the change made".\par
+7. Copy your remote repository's URL from GitHub.\par
+The HTTPS or URL is copied from the given GitHub account, which is the place of the remote repository.\par
+8. Add the URL copied, which is your remote repository to where your local content from your repository is pushed.\par
+git remote add origin 'your_url_name'\par
+9. Push the code in your local repository to GitHub\par
+git push -u origin master is used for pushing local content to GitHub.\par
+In the code, the origin is your default remote repository name and '-u' flag is upstream, which is equivalent to '-set-upstream.' and the master is the branch, name.upstream is the repository that we have cloned the project.\par
+Fill in your GitHub username and password.\par
+10. View your files in your repository hosted on GitHub.\par
+You can finally see the file hosted on GitHub.\par
+Similarly, we can use:\par
+
+\pard\sl240\slmult1\cf2\highlight3 git clone which\~means you are making a copy of the repository in your system.\par
+git fork which\~means you are copying the repository to your Github account.\par
+git pull which\~means you are fetching the last modified repository.\par
+git push which\~means you are returning the repository after modifying it\par
+
+\pard\sa200\sl276\slmult1\cf0\highlight0\par
+\par
+\par
+\par
+.\tab\par
+     \par
+\par
+}
+ 
